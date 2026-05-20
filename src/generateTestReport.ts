@@ -21,7 +21,7 @@ interface TestRunResults {
 
 function loadTestRunResults(filePath: string): TestRunResults {
   const file = fs.readFileSync(filePath, 'utf8');
-  return yaml.load(file) as TestRunResults;
+  return yaml.load(file, { schema: yaml.JSON_SCHEMA }) as TestRunResults;
 }
 
 function generateTestReportMarkdown(results: TestRunResults): string {
