@@ -23,7 +23,7 @@ interface FeatureMap {
 
 function loadFeatureMap(filePath: string): FeatureMap {
   const file = fs.readFileSync(filePath, 'utf8');
-  return yaml.load(file) as FeatureMap;
+  return yaml.load(file, { schema: yaml.JSON_SCHEMA }) as FeatureMap;
 }
 
 function generateTestRunResultsYaml(featureMap: FeatureMap): string {
